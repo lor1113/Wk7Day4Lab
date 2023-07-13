@@ -17,8 +17,13 @@ const CountryAddForm = ({countries, handleAddForm, selectedCountries}) => {
         }
     }
 
+    const handleAddFormEvent = function(event){
+        setCountrySelected(false)
+        handleAddForm(event)
+    }
+
     return (
-        <form id="add-form" onSubmit={handleAddForm}>
+        <form id="add-form" onSubmit={handleAddFormEvent}>
             <select name="country" defaultValue="Add Country" onChange={handleChange}>
                 <option value="Add Country">Add Country</option>
                 {countryOptions}

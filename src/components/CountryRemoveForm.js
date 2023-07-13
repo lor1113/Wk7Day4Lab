@@ -16,8 +16,13 @@ const CountryRemoveForm = ({selectedCountries, handleRemoveForm}) => {
         }
     }
 
+    const handleRemoveFormEvent = function(event){
+        setCountrySelected(false)
+        handleRemoveForm(event)
+    }
+
     return (
-        <form id="remove-form" onSubmit={handleRemoveForm}>
+        <form id="remove-form" onSubmit={handleRemoveFormEvent}>
             <select name="country" defaultValue="Remove Country" onChange={handleChange}>
                 <option value="Remove Country">Remove Country</option>
                 {countryOptions}

@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 
 import CountryListContainer from './containers/CountryListContainer';
+import CountryDetailContainer from './containers/CountryDetailContainer';
 
 function App() {
     const [countries, setCountries] = useState([]);
