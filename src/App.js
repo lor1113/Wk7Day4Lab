@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+
+import CountryListContainer from './containers/CountryListContainer';
 
 function App() {
+    const [countries, setCountries] = useState([]);
+
+    const getCountries = function(){
+        fetch('https://restcountries.com/v3.1/all')
+        .then(res => res.json())
+        .then(countries => setCountries(countries))
+    }
+
+    useEffect(() => {
+      getCountries();
+    }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="full-page-wrap">
+      <CountryListContainer countries={countries}/>
+      <CountryDetailContainer countries={countries}/>
     </div>
   );
 }
